@@ -11,6 +11,8 @@
 
 // Note: for this kata y isn't considered a vowel.
 
+// ##################################################################################################################################################
+
 let vowels = ['a', 'e', 'i', 'o', 'u']
 let str = "This website is for losers LOL!"
 console.log(str.split('').filter(a => !vowels.includes(a.toLocaleLowerCase())).join(''))
@@ -33,8 +35,11 @@ function disemvowel(str) {
     return str.split('').filter(a => !vowels.includes(a.toLocaleLowerCase())).join('')
 }
 
+// ##################################################################################################################################################
+// Test Cases
+// Run Tests using node_modules/.bin/mocha .\Disemvowel_Trolls.js
 
-// const { assert } = require("chai")
+const { assert } = require("chai")
 
 describe("Basic tests", () => {
     it("Testing for fixed tests", () => {
