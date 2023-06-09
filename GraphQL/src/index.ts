@@ -13,36 +13,43 @@ const typeDefs = `#graphql
     author: String
   }
 
+  type User {
+    id: ID!
+    username: String!
+  }
+
   # The "Query" type is special: it lists all of the available queries that
   # clients can execute, along with the return type for each. In this
   # case, the "books" query returns an array of zero or more Books (defined above).
   type Query {
     books: [Book]
   }
+
+
 `;
 
 const books = [
-    {
-        title: 'The Awakening',
-        author: 'Kate Chopin',
-    },
-    {
-        title: 'City of Glass',
-        author: 'Paul Auster',
-    },
+  {
+    title: 'The Awakening',
+    author: 'Kate Chopin',
+  },
+  {
+    title: 'City of Glass',
+    author: 'Paul Auster',
+  },
 ];
 
 const resolvers = {
-    Query: {
-        books: () => books,
-    },
+  Query: {
+    books: () => books,
+  },
 };
 
 // The ApolloServer constructor requires two parameters: your schema
 // definition and your set of resolvers.
 const server = new ApolloServer({
-    typeDefs,
-    resolvers,
+  typeDefs,
+  resolvers,
 });
 
 // Passing an ApolloServer instance to the `startStandaloneServer` function:
@@ -50,7 +57,7 @@ const server = new ApolloServer({
 //  2. installs your ApolloServer instance as middleware
 //  3. prepares your app to handle incoming requests
 const { url } = await startStandaloneServer(server, {
-    listen: { port: 4000 },
+  listen: { port: 4000 },
 });
 
 console.log(`🚀  Server ready at: ${url}`);
